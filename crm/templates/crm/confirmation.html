@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="pb-4"><b>Выбранный врач:</b> {{ doctor.name }}</div>
+<div class="pb-4"><b>Выбранная дата:</b> {{ date|date:"d E Y года (l)" }}</div>
+<div class="pb-4"><b>Выбранный период:</b> {{ period }}:00 – {{ period|add:1 }}:00</div>
+<div class="pb-4"><b>Имя пациента:</b> {{ patient }}</div>
+
+<div class="h4 pb-4">Поздравляем! Ваше бронирование №{{order}}.</div>
+
+{% endblock %}

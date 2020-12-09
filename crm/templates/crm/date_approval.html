@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="pb-4"><b>Выбранный врач:</b> {{ doctor.name }}</div>
+<div class="h4 pb-4">Выберите дату для записи:</div>
+<form action="{% url 'date_approval' doctor.pk %}" method="post" class="pb-4">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <a href="{% url 'doctor_approval' %}" class="btn btn-danger" role="button">Назад</a>
+    <button type="submit" class="btn btn-primary btn-block">Выбрать дату</button>
+</form>
+{% endblock %}

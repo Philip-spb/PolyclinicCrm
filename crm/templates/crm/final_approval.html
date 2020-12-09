@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="pb-4"><b>Выбранный врач:</b> {{ doctor.name }}</div>
+<div class="pb-4"><b>Выбранная дата:</b> {{ date|date:"d E Y года (l)" }}</div>
+<div class="pb-4"><b>Выбранный период:</b> {{ period }}:00 – {{ period|add:1 }}:00</div>
+<form action="" method="post" class="pb-4">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <a href="{% url 'time_approval' doctor.pk ord_date %}" class="btn btn-danger" role="button">Назад</a>
+    <button type="submit" class="btn btn-primary btn-block">Отправить</button>
+</form>
+{% endblock %}
