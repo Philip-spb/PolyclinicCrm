@@ -17,9 +17,8 @@ class DoctorsAdmin(admin.ModelAdmin):
         orders = Orders.objects.filter(doctor=obj.id).order_by('date','time_period')
         order_str = ''
         # Показываем только актуальные бронирования
-        for order in orders:
-            if order.date >= date.today():
-                order_str += str(order) + '<br>'
+        for order in orders.filter(date__gte=date.today()):
+            order_str += str(order) + '<br>'
         return mark_safe(order_str)
 
     order_list.short_description = 'Список бронирований'
